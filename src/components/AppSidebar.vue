@@ -50,18 +50,6 @@ const menuItems = ref([
     to: '/users',
     exact: true,
     roles: ['admin'] // Only accessible to admin
-  },{
-    label: 'Employees',
-    icon: 'pi pi-users',
-    to: '/employees',
-    exact: true,
-    roles: ['admin', 'accountant'] // Accessible to both
-  },{
-    label: 'Expenses',
-    icon: 'pi pi-money-bill',
-    to: '/expenses',
-    exact: true,
-    roles: ['admin','accountant'] // Only accessible to accountant
   },
   {
     label: 'Settings',
@@ -98,26 +86,26 @@ const logout = async () => {
 
 <template>
   <aside
-      :class="[
+    :class="[
       'bg-surface-100 dark:bg-surface-900 border-r border-surface-200 dark:border-surface-700',
       'transition-all duration-300 ease-in-out',
       'fixed md:relative h-screen z-20',
       'sticky top-0',
-      collapsed ? 'w-20' : 'w-64',
-      mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+      collapsed ? 'md:w-20' : 'md:w-64',
+      mobileOpen ? 'translate-x-0 w-64' : '-translate-x-full md:translate-x-0 w-0'
     ]"
   >
     <div class="h-full flex flex-col">
-      <div class="p-4 border-b border-surface-200 dark:border-surface-700">
+      <div class="p-4  border-b border-surface-200 dark:border-surface-700">
         <div class="flex items-center ml-4">
           <button
-              @click="$emit('toggle-collapse')"
-              class="w-full"
+            @click="$emit('toggle-collapse')"
+            class="w-full"
           >
             <div class="flex items-center gap-3 text-surface-600 dark:text-surface-400">
               <i
-                  class="pi text-lg transition-transform"
-                  :class="collapsed ? 'pi-th-large' : 'pi-th-large'"
+                class="pi text-lg transition-transform"
+                :class="collapsed ? 'pi-th-large' : 'pi-th-large'"
               />
             </div>
           </button>
@@ -128,10 +116,10 @@ const logout = async () => {
 
       <nav class="flex-1 p-2 space-y-1 overflow-y-auto">
         <template v-for="item in filteredMenuItems" :key="item.label">  <router-link
-            v-if="!item.children"
-            :to="item.to"
-            class="flex items-center gap-3 p-3 rounded-lg transition-colors group"
-            :class="[
+          v-if="!item.children"
+          :to="item.to"
+          class="flex items-center gap-3 p-3 rounded-lg transition-colors group"
+          :class="[
               isActive(item)
                 ? 'bg-primary-500/10 text-primary-600 dark:text-primary-400'
                 : 'text-surface-600 dark:text-surface-300 hover:bg-surface-200/50 dark:hover:bg-surface-800',
@@ -144,8 +132,8 @@ const logout = async () => {
 
           <div v-else class="group">
             <div
-                class="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors"
-                :class="[
+              class="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors"
+              :class="[
                 item.children.some(child => isActive(child))
                   ? 'bg-primary-500/10 text-primary-600 dark:text-primary-400'
                   : 'text-surface-600 dark:text-surface-300 hover:bg-surface-200/50 dark:hover:bg-surface-800',
@@ -155,22 +143,22 @@ const logout = async () => {
               <i :class="item.icon" class="text-lg" />
               <span v-if="!collapsed" class="text-sm font-medium flex-1">{{ item.label }}</span>
               <i
-                  v-if="!collapsed"
-                  class="pi pi-chevron-down text-xs transition-transform"
-                  :class="{ 'rotate-180': item.isOpen }"
+                v-if="!collapsed"
+                class="pi pi-chevron-down text-xs transition-transform"
+                :class="{ 'rotate-180': item.isOpen }"
               />
             </div>
 
             <div
-                v-if="!collapsed && item.isOpen"
-                class="ml-8 space-y-1"
+              v-if="!collapsed && item.isOpen"
+              class="ml-8 space-y-1"
             >
               <router-link
-                  v-for="child in item.children"
-                  :key="child.label"
-                  :to="child.to"
-                  class="flex items-center gap-2 p-2 text-sm rounded-lg transition-colors"
-                  :class="[
+                v-for="child in item.children"
+                :key="child.label"
+                :to="child.to"
+                class="flex items-center gap-2 p-2 text-sm rounded-lg transition-colors"
+                :class="[
                   isActive(child)
                     ? 'text-primary-600 dark:text-primary-400'
                     : 'text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-surface-100'
@@ -185,20 +173,20 @@ const logout = async () => {
       </nav>
       <div class="p-4 border-t border-surface-200 dark:border-surface-700">
         <Button
-            label="Logout"
-            icon="pi pi-power-off"
-            class="w-full"
-            severity="secondary"
-            outlined
-            @click="logout"
+          label="Logout"
+          icon="pi pi-power-off"
+          class="w-full"
+          severity="secondary"
+          outlined
+          @click="logout"
         />
       </div>
     </div>
 
     <div
-        v-if="mobileOpen"
-        class="fixed inset-0 bg-black/50 md:hidden z-10"
-        @click="$emit('close-mobile')"
+      v-if="mobileOpen"
+      class="fixed inset-0  md:hidden z-10"
+      @click="$emit('close-mobile')"
     />
   </aside>
 </template>

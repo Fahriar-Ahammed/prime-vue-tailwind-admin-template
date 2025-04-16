@@ -26,7 +26,7 @@ defineEmits(['toggle-mobile']);
         <div class="flex gap-3 items-center">
           <span class="hidden sm:flex flex-col">
                         <span class="text-xl font-light text-surface-700 dark:text-surface-100 leading-none">
-                            AL-modina
+                            Cuddle Crafter Admin
                         </span>
 
                     </span>

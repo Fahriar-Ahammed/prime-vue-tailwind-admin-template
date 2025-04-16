@@ -2,12 +2,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Dashboard from "../views/Dashboard.vue";
 import Users from "../views/Users.vue";
-import EmployeeData from "../views/EmployeeData.vue";
-import ExpensesData from "../views/ExpensesData.vue";
 import Login from '../views/Login.vue';
 import { authService } from '../services/authService';
 import EmptyLayout from "../layouts/EmptyLayout.vue";
-import AdminLayout from "../layouts/AdminLayout.vue"; // Import AdminLayout
+import AdminLayout from "../layouts/AdminLayout.vue";
+
 
 const isAuthenticated = () => {
     return authService.isAuthenticated();
@@ -58,18 +57,7 @@ const router = createRouter({
                     component: Users,
                     meta: { roles: ['admin'] }
                 },
-                {
-                    path: 'employees', // Relative path, becomes /employees
-                    name: 'employees',
-                    component: EmployeeData,
-                    meta: { roles: ['admin', 'accountant'] }
-                },
-                {
-                    path: 'expenses', // Relative path, becomes /expenses
-                    name: 'expenses',
-                    component: ExpensesData,
-                    meta: { roles: ['admin','accountant'] }
-                },
+
                 // {
                 //     path: 'settings', // Relative path, becomes /settings
                 //     name: 'settings',
