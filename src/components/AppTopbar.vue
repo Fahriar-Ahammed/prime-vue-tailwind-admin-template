@@ -9,7 +9,7 @@ defineEmits(['toggle-mobile']);
 
 <template>
   <div
-      class="bg-surface-0 dark:bg-surface-900 rounded-2xl p-4 md:p-3 md:m-2 border-b md:border border-surface-200 dark:border-surface-700 w-full sticky top-0 z-30"
+      class="bg-surface-0 dark:bg-surface-900 rounded-2xl p-4 md:p-3 m-1 md:m-2 border-b md:border border-surface-200 dark:border-surface-700 sticky top-0 z-30"
   >
     <div class="flex justify-between items-center">
       <!-- Left Section -->

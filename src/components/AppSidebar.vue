@@ -91,8 +91,8 @@ const logout = async () => {
       'transition-all duration-300 ease-in-out',
       'fixed md:relative h-screen z-20',
       'sticky top-0',
-      collapsed ? 'md:w-20' : 'md:w-64',
-      mobileOpen ? 'translate-x-0 w-64' : '-translate-x-full md:translate-x-0 w-0'
+      collapsed ? 'md:w-20' : 'md:w-60',
+      mobileOpen ? 'translate-x-0 w-64' : '-translate-x-full md:translate-x-0 w-0 overflow-hidden'
     ]"
   >
     <div class="h-full flex flex-col">
@@ -173,7 +173,7 @@ const logout = async () => {
       </nav>
       <div class="p-4 border-t border-surface-200 dark:border-surface-700">
         <Button
-          label="Logout"
+          :label="collapsed ? '' : 'Logout'"
           icon="pi pi-power-off"
           class="w-full"
           severity="secondary"

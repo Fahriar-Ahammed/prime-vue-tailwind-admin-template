@@ -7,7 +7,7 @@ import StatsWidget from "../components/dashboard/StatsWidget.vue";
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto flex flex-col gap-6">
+  <div class="w-full mx-auto flex flex-col gap-6">
     <StatsWidget />
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <SalesTrendWidget />
